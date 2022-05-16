@@ -1,8 +1,13 @@
-<h2>Choose a film!</h2>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="container">
+    <h1>Choose a Movie to add to</h1>
+    <h2> <%= @list.name %> </h2>
+  </div>
+</div>
 
 <%= simple_form_for [ @list, @bookmark ] do |f| %>
-  <%= f.input :comment  %>
   <%= f.association :movie %>
+  <%= f.input :comment  %>
   <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>
 

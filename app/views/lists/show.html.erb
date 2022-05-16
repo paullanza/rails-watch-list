@@ -1,0 +1,30 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="container">
+    <h1><%= @list.name %></h1>
+  </div>
+</div>
+
+
+<div class="d-flex m-4 justify-content-between align-items-center">
+  <h3>Your Movies</h3>
+  <%= link_to "Add a Movie", new_list_bookmark_path(@list), class: "btn btn-gradient" %>
+</div>
+
+<div class="container">
+  <div class="row">
+    <% @list.bookmarks.each do |bookmark| %>
+    <div class="border col-sm-4 col-md-4 p-0">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= bookmark.movie.poster_url %>)">
+      </div>
+      <div class="p-2">
+        <h2><%= bookmark.movie.title %></h2>
+        <p><%= bookmark.movie.overview %></p>
+      </div>
+      <div class="d-flex justify-content-between px-2 py-0">
+        <p>"<%= bookmark.comment %>"</p>
+        <%= link_to "Delete", bookmark_path(bookmark), method: :delete %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
